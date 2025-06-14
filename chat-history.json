@@ -1,0 +1,57 @@
+[
+  {
+    "message": "Hello! What would you like to know?",
+    "sender": "bot",
+    "timestamp": "2025-06-14T14:03:25.944Z"
+  },
+  {
+    "message": "Contact Info",
+    "sender": "user",
+    "timestamp": "2025-06-14T14:03:31.559Z"
+  },
+  {
+    "message": "You can email us at support@example.com or call +91-1234567890.",
+    "sender": "bot",
+    "timestamp": "2025-06-14T14:03:31.582Z"
+  },
+  {
+    "message": "Support Options",
+    "sender": "user",
+    "timestamp": "2025-06-14T14:03:48.482Z"
+  },
+  {
+    "message": "You can reach out via email, phone, or join our student community.",
+    "sender": "bot",
+    "timestamp": "2025-06-14T14:03:48.508Z"
+  },
+  {
+    "message": "Courses",
+    "sender": "user",
+    "timestamp": "2025-06-14T14:04:02.376Z"
+  },
+  {
+    "message": "We offer courses in Web Development, Python, Data Science, and Communication Skills.",
+    "sender": "bot",
+    "timestamp": "2025-06-14T14:04:02.401Z"
+  },
+  {
+    "message": "Hello! What would you like to know?",
+    "sender": "bot",
+    "timestamp": "2025-06-14T14:05:18.413Z"
+  },
+  {
+    "message": "How to Apply",
+    "sender": "user",
+    "timestamp": "2025-06-14T14:05:20.895Z"
+  },
+  {
+    "message": "You can apply by visiting our official website and filling the registration form.",
+    "sender": "bot",
+    "timestamp": "2025-06-14T14:05:20.912Z"
+  },
+  {
+    "message": "Hello! What would you like to know?",
+    "sender": "bot",
+    "timestamp": "2025-06-14T14:05:30.908Z"
+  }
+]
