@@ -2,14 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
 
-const historyRoutes = require('./routers/history'); // ✅ match your folder name
+const historyRoutes = require('./routers/history'); // optional
 
 const app = express();
 
-// Middleware to parse JSON and serve frontend
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve static assets in root (like index.html, JS, CSS)
+app.use(express.static(__dirname));
 
 // Load decision tree
 const decisionTreePath = path.join(__dirname, 'bot-logic', 'decision-tree.json');
@@ -21,7 +25,7 @@ try {
   console.error('❌ Error loading decision tree:', err.message);
 }
 
-// Respond to chat requests
+// Chat endpoint
 app.post('/api/chat', (req, res) => {
   const node = req.body.node;
   const response = decisionTree[node] || {
@@ -31,12 +35,27 @@ app.post('/api/chat', (req, res) => {
   res.json(response);
 });
 
-// Save history API
+// Save history endpoint
+app.post('/api/save-history', (req, res) => {
+  const historyPath = path.join(__dirname, 'chat-history.json');
+  const newEntry = req.body;
+
+  let history = [];
+  if (fs.existsSync(historyPath)) {
+    history = JSON.parse(fs.readFileSync(historyPath, 'utf-8') || '[]');
+  }
+  history.push(newEntry);
+
+  fs.writeFileSync(historyPath, JSON.stringify(history, null, 2));
+  res.json({ status: 'ok' });
+});
+
+// Optional custom routes
 app.use('/api', historyRoutes);
 
-// Serve the main HTML
+// Serve index.html directly
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 module.exports = app;
